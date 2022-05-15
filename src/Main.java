@@ -10,23 +10,23 @@ public class Main {
         String CharCheckNumberTwo = "";
         String CheckRoman = "";
         Scanner UserInput = new Scanner(System.in);
-        System.out.println("Введите строку в формате число А, необходимая операция, число B.\n" +
-                            "Список доступных операций: + - * /\n"+
-                            "Числа A и B  должны быть оба Арабские или Римские\n" +
-                            "Числа A и B  должны быть оба в диапозоне от 1 до 10 \n" +
-                            "Пример для арабских чисел: 3 + 5 \n" +
-                            "Пример для римских чисел: I + II");
+        System.out.println("Enter a string in the format number A, , required operation, number B.\n" +
+                            "List of available operations: + - * /\n"+
+                            "Digits A and B must be Arabic or Roman \n" +
+                            "Digits A and B must be in the range from 1 to 10  \n" +
+                            "Example for Arabic numerals: 3 + 5\n" +
+                            "Example for Roman numerals: I + II");
         String consoltext = UserInput.nextLine();
         String[] UserInputWord;
         UserInputWord = consoltext.split("\\s");
         int counterString = UserInputWord.length;
         if (counterString != 3)
         {
-            System.out.println("Вы ввели больше или меньше чем нужно чисел, так же возможно напутали с пробелом");
+            System.out.println("You have entered more or less numbers than you need, you may also have messed up with a space");
             System.exit(0);
         }
         if(UserInputWord[0] == null || UserInputWord[0].equals("")) {
-            System.out.println("Вы ввели пустую строку или начали ее с пробела");
+            System.out.println("You entered an empty string or started it with a space");
             System.exit(0);
             } else
             {
@@ -54,25 +54,25 @@ public class Main {
         CheckRoman=convertRoman(CharCheckNumberOne,CharCheck,CharCheckNumberTwo);
         switch (CheckRoman)
         {
-            case "В римских цифрах минуса или 0 нет, сорри":
+            case "There is no minus or 0 in Roman numerals, sorry":
             {
                 System.out.println(CheckRoman);
                 System.exit(0);
             }
-            case "Оба или Одно из чисел не римские":
+            case "Both or one of the numbers are not Roman":
             {
                break;
             }
             default:
             {
 
-                System.out.println(" Результат: " + CheckRoman);
+                System.out.println(" Result: " + CheckRoman);
                 System.exit(0);
             }
         }
         CheckNumberValue(FirstNumber,SecondNumber);
         rezult = calc(FirstNumber,CharCheck,SecondNumber);
-        System.out.println("Результат: " + rezult);
+        System.out.println("Result: " + rezult);
 
         UserInput.close();
     }
@@ -83,7 +83,7 @@ public class Main {
             return true;
         } else
         {
-            System.out.println("Числа не нужного диапозона или смешанные арабские и римские");
+            System.out.println("Numbers of the wrong range or mixed Arabic and Roman");
             System.exit(0);
             return false;
         }
@@ -206,7 +206,7 @@ public class Main {
             String roman = RomanNumber.of(rezultRoman);
             return roman;
         }
-        return "Оба или Одно из чисел не римские";
+        return "Both or one of the numbers are not Roman";
     }
     public static int calc (int one, String operator, int two)
     {
@@ -218,7 +218,7 @@ public class Main {
             case "/": return one / two;
             default:
             {
-                System.out.println("Вы ввели недопустимую математическую операцию");
+                System.out.println("You have entered an invalid mathematical operation");
                 System.exit(0);
             }
         }
@@ -256,7 +256,7 @@ class RomanNumber {
     public static String of(int number) {
         if (number < 1 || 3999 < number) {
             throw new IllegalArgumentException(String.format(
-                    "Римские цифры имеют диапозон от 1 до 4000",
+                    "Roman numerals have a range from 1 to 4000",
                     number
             ));
         }
@@ -277,7 +277,7 @@ class RomanNumber {
 
     public static int parse(String roman) {
         if (roman.isEmpty()) {
-            throw new NumberFormatException("Пустая строка тут нету символов");
+            throw new NumberFormatException("An empty string there are no characters here");
         }
 
         int number = 0;
@@ -294,7 +294,7 @@ class RomanNumber {
         }
         if (offset != roman.length()) {
             throw new NumberFormatException(String.format(
-                    "Строка '%s' не содержит римских символов",
+                    "The string '%s' does not contain Roman ",
                     roman
             ));
         }
