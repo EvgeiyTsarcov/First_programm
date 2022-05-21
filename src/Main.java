@@ -20,92 +20,55 @@ public class Main {
         String[] userInputWord;
         userInputWord = consolText.split("\\s");
         int counterString = userInputWord.length;
-        if (counterString != 3)
-        {
+        if (counterString != 3) {
             System.out.println("You have entered more or less numbers than you need, you may also have messed up with a space");
             System.exit(0);
         }
         if(userInputWord[0] == null || userInputWord[0].equals("")) {
             System.out.println("You entered an empty string or started it with a space");
             System.exit(0);
-            } else
-            {
-
-                try
-                {
+            } else {
+                try {
                     firstNumber= Integer.parseInt(userInputWord[0]);
                 }
-                catch (NumberFormatException e)
-                {
+                catch (NumberFormatException e) {
 
                 }
-                try
-                {
+                try {
                     secondNumber= Integer.parseInt(userInputWord[2]);
                 }
-                catch (NumberFormatException e)
-                {
+                catch (NumberFormatException e) {
 
                 }
                 charCheckNumberOne = userInputWord[0];
                 charCheckNumberTwo = userInputWord[2];
                 charCheck = userInputWord[1];
             }
-        checkRoman=romanNumber.convertRoman(charCheckNumberOne,charCheck,charCheckNumberTwo);
-        switch (checkRoman)
-        {
-            case "There is no minus or 0 in Roman numerals, sorry":
-            {
+        checkRoman=RomanNumber.convertRoman(charCheckNumberOne,charCheck,charCheckNumberTwo);
+
+
+        switch (checkRoman) {
+            case "There is no minus or 0 in Roman numerals, sorry": {
                 System.out.println(checkRoman);
                 System.exit(0);
             }
-            case "Both or one of the numbers are not Roman":
-            {
+            case "Both or one of the numbers are not Roman": {
                break;
             }
-            default:
-            {
+            default: {
 
                 System.out.println(" Result: " + checkRoman);
                 System.exit(0);
             }
         }
-        checkNumberValue(firstNumber,secondNumber);
-        rezult = calc(firstNumber,charCheck,secondNumber);
+        Values.checkNumberValue(firstNumber,secondNumber);
+        rezult = Values.calc(firstNumber,charCheck,secondNumber);
         System.out.println("Result: " + rezult);
-
         userInput.close();
     }
-    public static boolean checkNumberValue (int numberOne, int numberTwo)
-    {
-        if ( ((numberOne > 0) && ( numberOne <= 10 )) && ((numberTwo > 0) && ( numberTwo <= 10 )) )
-        {
-            return true;
-        } else
-        {
-            System.out.println("Numbers of the wrong range or mixed Arabic and Roman");
-            System.exit(0);
-            return false;
-        }
+
     }
 
-    public static int calc (int one, String operator, int two)
-    {
-        switch (operator)
-        {
-            case "+": return one + two;
-            case "-": return one - two;
-            case "*": return  one * two;
-            case "/": return one / two;
-            default:
-            {
-                System.out.println("You have entered an invalid mathematical operation");
-                System.exit(0);
-            }
-        }
-        return -1;
-    }
-}
 
 
 
