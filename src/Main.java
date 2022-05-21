@@ -28,20 +28,13 @@ public class Main {
             System.out.println("You entered an empty string or started it with a space");
             System.exit(0);
             } else {
-                try {
-                    firstNumber= Integer.parseInt(userInputWord[0]);
-                }
-                catch (NumberFormatException e) {
-
-                }
-                try {
-                    secondNumber= Integer.parseInt(userInputWord[2]);
-                }
-                catch (NumberFormatException e) {
-
-                }
+            if (Character.isDigit(userInputWord[0].charAt(0))&&Character.isDigit(userInputWord[2].charAt(0))) {
+                firstNumber = Character.getNumericValue(userInputWord[0].charAt(0));
+                secondNumber = Character.getNumericValue(userInputWord[2].charAt(0));
+            } else {
                 charCheckNumberOne = userInputWord[0];
                 charCheckNumberTwo = userInputWord[2];
+            }
                 charCheck = userInputWord[1];
             }
         checkRoman=RomanNumber.convertRoman(charCheckNumberOne,charCheck,charCheckNumberTwo);
